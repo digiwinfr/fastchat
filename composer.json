@@ -1,13 +1,27 @@
 {
-    "name": "digiwin/fastchat",
-    "description": "A basic chat",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Digiwin\\Fastchat\\": "src/"
-        }
-    },
-    "require": {
-        "bramus/router": "~1.4"
+  "name": "digiwin/fastchat",
+  "description": "A basic chat",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Digiwin\\Fastchat\\": "src/"
     }
+  },
+  "extra": {
+    "installer-types": ["npm-asset"],
+    "installer-paths": {
+      "www/assets/lib/{$name}/": ["type:npm-asset"]
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "require": {
+    "bramus/router": "~1.4",
+    "npm-asset/bootstrap": "^4.3",
+    "oomphinc/composer-installers-extender": "^1.1"
+  }
 }

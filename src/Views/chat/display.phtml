@@ -1,1 +1,21 @@
-Hello <?= $name ?>
+<div class="container-fluid">
+    <div class="row chat">
+        <div class="col-8">
+            Messages
+        </div>
+        <div class="col border-left bg-light">
+            <ul>
+                <li>François</li>
+                <li>Léonard</li>
+                <li>Etienne</li>
+                <li>Hugo</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <form class="form-inline my-2 my-lg-0 w-100">
+        <input class="form-control mr-sm-2  w-50" type="text" placeholder="Envoyer un message à tout le monde">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Envoyer</button>
+    </form>
+</nav>

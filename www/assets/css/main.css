@@ -1,0 +1,16 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding: 56px 0;
+}
+
+.chat {
+    height: calc(100vh - 112px);
+}
+
+.chat > div {
+    height: calc(100vh - 112px);
+    padding:20px;
+}
