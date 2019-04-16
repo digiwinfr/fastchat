@@ -1,10 +1,10 @@
 <?php
 namespace Digiwin\Fastchat\Controllers;
 
-class ChatController
+class ChatController extends Controller
 {
-    public static function display()
+    public function display()
     {
-        echo 'CHAT';
+        $this->render('chat/display');
     }
 }
