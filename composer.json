@@ -2,5 +2,12 @@
     "name": "digiwin/fastchat",
     "description": "A basic chat",
     "type": "project",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Digiwin\\Fastchat\\": "src/"
+        }
+    },
+    "require": {
+        "bramus/router": "~1.4"
+    }
 }
