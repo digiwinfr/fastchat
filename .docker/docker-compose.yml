@@ -16,7 +16,7 @@ services:
   nginx:
     image: nginx:1.15
     ports:
-      - "8080:80"
+      - "${APP_PORT}:80"
     volumes:
       - ../:/app
       - ./services/nginx/site.conf:/etc/nginx/conf.d/default.conf
@@ -28,7 +28,12 @@ services:
       - ../:/app
       - composer_home:/tmp
     user: ${DEV_UID}:${DEV_GID}
-
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_HOST=mysql
+    ports:
+      - "${PMA_PORT}:80"
 volumes:
   mysql_data:
   composer_home:

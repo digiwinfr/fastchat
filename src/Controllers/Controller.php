@@ -22,4 +22,9 @@ abstract class Controller
         include $layoutPath;
         echo ob_get_clean();
     }
+
+    protected function renderJson($data)
+    {
+        echo json_encode($data);
+    }
 }
