@@ -8,14 +8,14 @@ class MessageRepository extends Repository
     public function findtLatest()
     {
         $statement = $this->db->query('SELECT * FROM message LEFT JOIN user ON message.author_id = user.id ORDER BY message.id DESC LIMIT 0,100');
-        $all = [];
+        $messages = [];
         foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $row) {
             $message = new Message();
-            $message->fromArray($row);
-            $all[] = $message;
+            $message->hydrate($row);
+            $messages[] = $message;
         }
 
-        return array_reverse($all);
+        return array_reverse($messages);
     }
 
     public function save(Message $message)
@@ -25,6 +25,6 @@ class MessageRepository extends Repository
 
     protected function sanitize($string)
     {
-        return $this->db->quote(stripslashes($string));
+        return $this->db->quote(htmlspecialchars(stripslashes($string)));
     }
 }

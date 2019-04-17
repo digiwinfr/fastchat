@@ -11,13 +11,13 @@ class Message implements Model
 
     public $author;
 
-    public function fromArray($array)
+    public function hydrate($array)
     {
         $this->id = $array['id'];
         $this->content = $array['content'];
         $this->date = $array['date'];
         $author = new User();
-        $author->fromArray([
+        $author->hydrate([
             'id' => $array['author_id'],
             'nickname' => $array['nickname'],
             'email' => $array['email']

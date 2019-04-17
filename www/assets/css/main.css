@@ -48,3 +48,12 @@ body {
 #message-form [name="content"] {
     resize: none;
 }
+#users > ul {
+    padding: 0;
+    list-style: none;
+}
+#users > ul li .gravatar {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

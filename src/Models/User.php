@@ -9,7 +9,7 @@ class User implements Model
 
     public $email;
 
-    public function fromArray($array)
+    public function hydrate($array)
     {
         $this->id = $array['id'];
         $this->nickname = $array['nickname'];

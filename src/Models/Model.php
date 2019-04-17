@@ -3,5 +3,5 @@ namespace Digiwin\Fastchat\Models;
 
 interface Model
 {
-    public function fromArray($array);
+    public function hydrate($array);
 }
