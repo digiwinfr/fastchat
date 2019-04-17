@@ -42,6 +42,8 @@ class LoginController extends Controller
 
     public function logout()
     {
+        $user = SecurityService::getUser();
+        $this->repository->disconnect($user->id);
         SecurityService::destroySession();
         $this->redirect('/login');
     }

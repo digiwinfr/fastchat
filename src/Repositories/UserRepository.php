@@ -25,7 +25,7 @@ class UserRepository extends Repository
         if ($count == 0) {
             $this->db->exec('INSERT INTO user (email, nickname) VALUES (' . $this->sanitize($user->email) . ',' . $this->sanitize($user->nickname) . ')');
         } else {
-            $this->db->exec('UPDATE user SET nickname = ' . $this->sanitize($user->nickname) . ' WHERE email=' . $this->sanitize($user->email));
+            $this->db->exec('UPDATE user SET nickname = ' . $this->sanitize($user->nickname) . ', connected = 1 WHERE email=' . $this->sanitize($user->email));
         }
         return $this->findByEmail($user->email);
     }
@@ -36,5 +36,10 @@ class UserRepository extends Repository
         $user = new User();
         $user->hydrate($statement->fetch(\PDO::FETCH_ASSOC));
         return $user;
+    }
+
+    public function disconnect($id)
+    {
+        $this->db->exec('UPDATE user SET connected = 0 WHERE id=' . $id);
     }
 }

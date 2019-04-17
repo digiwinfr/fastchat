@@ -9,10 +9,13 @@ class User implements Model
 
     public $email;
 
+    public $connected;
+
     public function hydrate($array)
     {
         $this->id = $array['id'];
         $this->nickname = $array['nickname'];
         $this->email = $array['email'];
+        $this->connected = $array['connected'];
     }
 }

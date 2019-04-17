@@ -29,7 +29,8 @@ CREATE TABLE `message` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nickname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `connected` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

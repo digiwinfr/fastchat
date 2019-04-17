@@ -46,6 +46,9 @@ var chat = {
     },
     _appendUser: function ($users, user) {
         const $user = document.createElement('li');
+        if (user.connected == 0) {
+            $user.classList.add('disconnected');
+        }
         $user.appendChild(this._getGravatar(user.email));
         const $nickname = document.createElement('span');
         $nickname.classList.add('nickname');
