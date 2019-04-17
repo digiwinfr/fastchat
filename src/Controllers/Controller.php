@@ -1,17 +1,16 @@
 <?php
 namespace Digiwin\Fastchat\Controllers;
 
+use Digiwin\Fastchat\Views\View;
+
 abstract class Controller
 {
     const VIEW_DIRECTORY = ROOT . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR;
 
     protected function render($viewName, $data = [])
     {
-        extract($data);
         $viewPath = self::VIEW_DIRECTORY . $viewName . '.phtml';
-        ob_start();
-        include $viewPath;
-        $view = ob_get_clean();
+        $view = new View($viewPath, $data);
         $this->renderLayout($view);
     }
 

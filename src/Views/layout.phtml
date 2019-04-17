@@ -8,13 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <?php foreach ($view->getStylesheets() as $stylesheet) { ?>
+        <link rel="stylesheet" href="<?= $stylesheet ?>">
+    <?php } ?>
+    <?php foreach ($view->getScripts() as $script) { ?>
+        <script type="text/javascript" src="<?= $script ?>"></script>
+    <?php } ?>
 </head>
 
 <body>
     <nav class="navbar fixed-top navbar-dark bg-dark">
         <a class="navbar-brand" href="#">FastChat</a>
     </nav>
-    <?= $view ?>
+    <?= $view->render() ?>
 </body>
 
 </html>
