@@ -34,7 +34,12 @@ var chat = {
         $date.innerText = dayjs(message.date).format('DD/MM HH:mm');
         const $content = document.createElement('div');
         $content.classList.add('content');
-        var content = message.content.replace(/\n/g, "<br />");
+        var md = window.markdownit({
+            breaks: true,
+            linkify: true
+        });
+        md.use(window.markdownitEmoji);
+        var content = md.render(message.content);
         $content.innerHTML = content;
         const $header = document.createElement('div');
         $header.appendChild(this._getGravatar(message.author.email));

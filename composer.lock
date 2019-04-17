@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1937b5b2e5a0fc71a0b9c624660958a",
+    "content-hash": "ee046911ae658bc7641540553468ae09",
     "packages": [
         {
             "name": "bramus/router",
@@ -174,6 +174,21 @@
             "time": "2018-08-27T06:10:37+00:00"
         },
         {
+            "name": "npm-asset/argparse",
+            "version": "1.0.10",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz"
+            },
+            "require": {
+                "npm-asset/sprintf-js": "~1.0.2"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "npm-asset/blueimp-md5",
             "version": "2.10.0",
             "dist": {
@@ -203,6 +218,100 @@
             "dist": {
                 "type": "tar",
                 "url": "https://registry.npmjs.org/dayjs/-/dayjs-1.8.12.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/entities",
+            "version": "1.1.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/entities/-/entities-1.1.2.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "BSD-2-Clause"
+            ]
+        },
+        {
+            "name": "npm-asset/linkify-it",
+            "version": "2.1.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/linkify-it/-/linkify-it-2.1.0.tgz"
+            },
+            "require": {
+                "npm-asset/uc.micro": ">=1.0.1,<2.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/markdown-it",
+            "version": "8.4.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/markdown-it/-/markdown-it-8.4.2.tgz"
+            },
+            "require": {
+                "npm-asset/argparse": ">=1.0.7,<2.0.0",
+                "npm-asset/entities": "~1.1.1",
+                "npm-asset/linkify-it": ">=2.0.0,<3.0.0",
+                "npm-asset/mdurl": ">=1.0.1,<2.0.0",
+                "npm-asset/uc.micro": ">=1.0.5,<2.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/markdown-it-emoji",
+            "version": "1.4.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/mdurl",
+            "version": "1.0.1",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/mdurl/-/mdurl-1.0.1.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/sprintf-js",
+            "version": "1.0.3",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "BSD-3-Clause"
+            ]
+        },
+        {
+            "name": "npm-asset/uc.micro",
+            "version": "1.0.6",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/uc.micro/-/uc.micro-1.0.6.tgz"
             },
             "type": "npm-asset",
             "license": [

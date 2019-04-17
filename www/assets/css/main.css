@@ -43,8 +43,12 @@ body {
 
 #messages > ol li .content {
     margin-left: 50px;
-    white-space: pre;
     font-family: "Courier New";
+}
+
+#messages > ol li .content p {
+    margin: 0;
+    padding: 0;
 }
 
 #message-form [name="content"] {

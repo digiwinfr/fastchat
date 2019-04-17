@@ -24,6 +24,8 @@
     "npm-asset/bootstrap": "^4.3",
     "oomphinc/composer-installers-extender": "^1.1",
     "npm-asset/blueimp-md5": "^2.10",
-    "npm-asset/dayjs": "^1.8"
+    "npm-asset/dayjs": "^1.8",
+    "npm-asset/markdown-it": "^8.4",
+    "npm-asset/markdown-it-emoji": "^1.4"
   }
 }
