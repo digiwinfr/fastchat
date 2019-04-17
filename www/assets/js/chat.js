@@ -34,7 +34,8 @@ var chat = {
         $date.innerText = dayjs(message.date).format('DD/MM HH:mm');
         const $content = document.createElement('div');
         $content.classList.add('content');
-        $content.innerHTML = message.content.replace(/\n/g, "<br />");
+        var content = message.content.replace(/\n/g, "<br />");
+        $content.innerHTML = content;
         const $header = document.createElement('div');
         $header.appendChild(this._getGravatar(message.author.email));
         $header.appendChild($author);
@@ -50,6 +51,10 @@ var chat = {
         $nickname.classList.add('nickname');
         $nickname.innerText = user.nickname;
         $user.appendChild($nickname);
+        const $email = document.createElement('span');
+        $email.classList.add('email');
+        $email.innerText = '<' + user.email + '>';
+        $user.appendChild($email);
         $users.appendChild($user)
     },
     _findMessages: function () {
@@ -109,12 +114,12 @@ var chat = {
     addMessage: function () {
         var self = this;
         var $content = document.getElementsByName('content')[0];
-        var content = $content.value.trim();
-        if (content !== '') {
+        var content = $content.value;
+        if (content.trim() !== '') {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'messages');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(encodeURI('content=' + content));
+            xhr.send('content=' + encodeURIComponent(content));
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {

@@ -22,9 +22,4 @@ class MessageRepository extends Repository
     {
         $this->db->exec('INSERT INTO message (content, date, author_id) VALUES (' . $this->sanitize($message->content) . ',\'' . $message->date . '\',' . $message->author->id . ')');
     }
-
-    protected function sanitize($string)
-    {
-        return $this->db->quote(htmlspecialchars(stripslashes($string)));
-    }
 }

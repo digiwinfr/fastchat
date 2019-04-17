@@ -26,4 +26,10 @@ abstract class Controller
     {
         echo json_encode($data);
     }
+
+    protected function redirect($route)
+    {
+        header('Location: ' . $route);
+        exit();
+    }
 }

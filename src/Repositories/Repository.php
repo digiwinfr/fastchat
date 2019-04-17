@@ -9,4 +9,9 @@ abstract class Repository
     {
         $this->db = new \PDO('mysql:host=mysql;dbname=' . DATABASE_NAME . ';charset=utf8', DATABASE_USER, DATABASE_PASSWORD);
     }
+
+    protected function sanitize($string)
+    {
+        return $this->db->quote(htmlspecialchars($string));
+    }
 }
