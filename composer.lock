@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b7c3c3ba5cff8eaff3497c1814ff017",
+    "content-hash": "b1937b5b2e5a0fc71a0b9c624660958a",
     "packages": [
         {
             "name": "bramus/router",
@@ -174,11 +174,35 @@
             "time": "2018-08-27T06:10:37+00:00"
         },
         {
+            "name": "npm-asset/blueimp-md5",
+            "version": "2.10.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/blueimp-md5/-/blueimp-md5-2.10.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "npm-asset/bootstrap",
             "version": "4.3.1",
             "dist": {
                 "type": "tar",
                 "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.3.1.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/dayjs",
+            "version": "1.8.12",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/dayjs/-/dayjs-1.8.12.tgz"
             },
             "type": "npm-asset",
             "license": [

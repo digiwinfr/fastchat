@@ -22,6 +22,8 @@
   "require": {
     "bramus/router": "~1.4",
     "npm-asset/bootstrap": "^4.3",
-    "oomphinc/composer-installers-extender": "^1.1"
+    "oomphinc/composer-installers-extender": "^1.1",
+    "npm-asset/blueimp-md5": "^2.10",
+    "npm-asset/dayjs": "^1.8"
   }
 }

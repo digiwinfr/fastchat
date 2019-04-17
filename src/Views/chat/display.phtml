@@ -1,8 +1,10 @@
+<?php $view->addScript('assets/lib/blueimp-md5/js/md5.js'); ?>
+<?php $view->addScript('assets/lib/dayjs/dayjs.min.js'); ?>
 <?php $view->addScript('assets/js/chat.js'); ?>
 <div class="container-fluid">
     <div class="row chat">
         <div class="col-8">
-            Messages
+            <ol id="messages"></ol>
         </div>
         <div class="col border-left bg-light">
             <ul>
