@@ -1,7 +1,7 @@
 var chat = {
     _getGravatar: function (email) {
         var $gravatar = document.createElement('img');
-        $gravatar.src = 'http://www.gravatar.com/avatar/' + md5(email);
+        $gravatar.src = 'http://www.gravatar.com/avatar/' + md5(email) + '?d=identicon';
         $gravatar.classList.add('gravatar');
         return $gravatar;
     },
