@@ -16,11 +16,13 @@
 <body>
 <nav class="navbar fixed-top navbar-dark bg-dark">
     <a class="navbar-brand" href="#">FastChat</a>
+    <?php if(\Digiwin\Fastchat\Services\SecurityService::hasSession()): ?>
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" href="/logout">Déconnexion</a>
         </li>
     </ul>
+    <?php endif; ?>
 </nav>
 <?= $view->render() ?>
 <?php foreach ($view->getScripts() as $script) { ?>
