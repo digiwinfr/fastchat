@@ -3,8 +3,8 @@
 <?php $view->addScript('assets/js/chat.js'); ?>
 <div class="container-fluid">
     <div class="row chat">
-        <div class="col-8">
-            <ol id="messages"></ol>
+        <div class="col-8" id="messages">
+            <ol></ol>
         </div>
         <div class="col border-left bg-light">
             <ul>
@@ -17,8 +17,8 @@
     </div>
 </div>
 <nav class="navbar fixed-bottom navbar-dark bg-dark">
-    <form class="form-inline my-2 my-lg-0 w-100">
-        <input class="form-control mr-sm-2  w-50" type="text" placeholder="Envoyer un message à tout le monde">
+    <form class="form-inline my-2 my-lg-0 w-100" method="POST" action="messages" id="message-form">
+        <textarea class="form-control mr-sm-2  w-50" placeholder="Envoyer un message à tout le monde" name="content" rows="1"></textarea>
         <button class="btn btn-primary my-2 my-sm-0" type="submit">Envoyer</button>
     </form>
 </nav>

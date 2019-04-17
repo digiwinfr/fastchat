@@ -12,7 +12,11 @@ $router->get('', function () use ($chatController) {
 });
 
 $router->get('/messages', function () use ($messageController) {
-    $messageController->all();
+    $messageController->latest();
+});
+
+$router->post('/messages', function () use ($messageController) {
+    $messageController->add();
 });
 
 $router->run();

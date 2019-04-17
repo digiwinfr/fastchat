@@ -11,9 +11,6 @@
     <?php foreach ($view->getStylesheets() as $stylesheet) { ?>
         <link rel="stylesheet" href="<?= $stylesheet ?>">
     <?php } ?>
-    <?php foreach ($view->getScripts() as $script) { ?>
-        <script type="text/javascript" src="<?= $script ?>"></script>
-    <?php } ?>
 </head>
 
 <body>
@@ -21,6 +18,9 @@
         <a class="navbar-brand" href="#">FastChat</a>
     </nav>
     <?= $view->render() ?>
+    <?php foreach ($view->getScripts() as $script) { ?>
+        <script type="text/javascript" src="<?= $script ?>"></script>
+    <?php } ?>
 </body>
 
 </html>

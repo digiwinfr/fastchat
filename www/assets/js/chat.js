@@ -12,10 +12,17 @@ var chat = {
         return $gravatar;
     },
     _getMessagesContainer: function () {
-        return document.getElementById('messages');
+        return document.querySelector('#messages');
+    },
+    _getMessagesList: function () {
+        return document.querySelector('#messages > ol');
     },
     _clearMessages: function () {
-        this._getMessagesContainer().innerHTML = null;
+        this._getMessagesList().innerHTML = null;
+    },
+    _scrollIsOnBottom: function () {
+        var $messagesContainer = this._getMessagesContainer();
+        return $messagesContainer.scrollTop === $messagesContainer.scrollHeight - $messagesContainer.offsetHeight;
     },
     _appendMessage: function ($messages, message) {
         const $message = document.createElement('li');
@@ -25,9 +32,9 @@ var chat = {
         const $date = document.createElement('span');
         $date.classList.add('date');
         $date.innerText = dayjs(message.date).format('DD/MM HH:mm');
-        const $content = document.createElement('span');
+        const $content = document.createElement('div');
         $content.classList.add('content');
-        $content.innerHTML = message.content;
+        $content.innerHTML = message.content.replace(/\n/g, "<br />");
         const $header = document.createElement('div');
         $header.appendChild(this._getGravatar(message.author.email));
         $header.appendChild($author);
@@ -42,23 +49,71 @@ var chat = {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
+                    var $messagesContainer = self._getMessagesContainer();
+                    var scrollIsOnBottom = self._scrollIsOnBottom();
                     var messages = JSON.parse(xhr.responseText);
                     self._clearMessages();
-                    var $messages = self._getMessagesContainer();
+                    var $messages = self._getMessagesList();
                     for (var i = 0; i < messages.length; i++) {
                         var message = messages[i];
                         self._appendMessage($messages, message);
                     }
-
+                    if (scrollIsOnBottom) {
+                        self.updateScroll();
+                    }
                 } else {
                     console.log('Error: ' + xhr.status);
                 }
             }
         };
+    },
+    addMessage: function () {
+        var self = this;
+        var $content = document.getElementsByName('content')[0];
+        var content = $content.value.trim();
+        if (content !== '') {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'messages');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(encodeURI('content=' + content));
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        $content.value = '';
+                        self.refreshMessages();
+                        self.focusContentInput();
+                    } else {
+                        console.log('Error: ' + xhr.status);
+                    }
+                }
+            };
+        }
+    },
+    focusContentInput: function () {
+        document.querySelector('#message-form [name=content]').focus();
+    },
+    updateScroll: function () {
+        var $messagesContainer = this._getMessagesContainer();
+        $messagesContainer.scrollTop = $messagesContainer.scrollHeight;
     }
 };
 
-chat.refreshMessages();
-setInterval(function () {
-    chat.refreshMessages()
-}, 1000);
+(function () {
+
+    document.querySelector('#message-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        chat.addMessage();
+    });
+    document.querySelector('#message-form [name=content]').addEventListener('keydown', function (e) {
+        if (e.keyCode === 13 && e.ctrlKey) {
+            chat.addMessage();
+        }
+    });
+    chat.focusContentInput();
+
+    chat.refreshMessages();
+    setInterval(function () {
+        chat.refreshMessages()
+    }, 1000);
+})();
+
