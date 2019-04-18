@@ -49,7 +49,7 @@ var chat = {
     },
     _appendUser: function ($users, user) {
         const $user = document.createElement('li');
-        if (user.connected == 0) {
+        if (!user.connected) {
             $user.classList.add('disconnected');
         }
         $user.appendChild(this._getGravatar(user.email));
@@ -118,15 +118,23 @@ var chat = {
                     var users = JSON.parse(xhr.responseText);
                     self._clearUsers();
                     var $users = self._getUsersList();
+                    var usersTotal = 0;
+                    var connectedUsers = 0;
                     for (var i = 0; i < users.length; i++) {
                         var user = users[i];
+                        connectedUsers += user.connected ? 1 : 0;
+                        usersTotal = i;
                         self._appendUser($users, user);
                     }
+                    self._refreshUsersCounter(connectedUsers, usersTotal);
                 } else {
                     console.log('Error: ' + xhr.status);
                 }
             }
         };
+    },
+    _refreshUsersCounter: function (connectedUsers, usersTotal) {
+        document.querySelector('#users-counter .col').innerText = connectedUsers + ' connectés / ' + usersTotal;
     },
     addMessage: function () {
         var self = this;

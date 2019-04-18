@@ -16,6 +16,6 @@ class User implements Model
         $this->id = $array['id'];
         $this->nickname = $array['nickname'];
         $this->email = $array['email'];
-        $this->connected = $array['connected'];
+        $this->connected = $array['connected'] == 1 ? true : false;
     }
 }

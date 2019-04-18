@@ -26,12 +26,12 @@ body {
 
 }
 
-
-#right-panel > .row > .col {
+#right-panel > .row.f50 > .col {
     padding: 20px;
     overflow: auto;
-    height: calc(50vh - 56px);
+    height: calc(50vh - 71px);
 }
+
 #messages {
     padding: 0;
     list-style: none;
@@ -108,6 +108,14 @@ body {
     bottom: auto;
     left: auto;
     z-index: 1;
+    display: block;
+}
+
+#users-counter .col{
+    text-align: center;
+    color: grey;
+    height:30px;
+    padding:5px;
     display: block;
 }
 
