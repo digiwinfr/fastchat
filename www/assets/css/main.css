@@ -70,6 +70,7 @@ body {
 
 #message-form [name="content"] {
     resize: none;
+    height: 38px;
 }
 
 #users {
