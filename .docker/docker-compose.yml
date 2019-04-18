@@ -13,6 +13,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
+      - ../dump.sql:/tmp/dump.sql
   nginx:
     image: nginx:1.15
     ports:
