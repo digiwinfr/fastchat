@@ -6,13 +6,13 @@ var chat = {
         return $gravatar;
     },
     _getMessagesContainer: function () {
-        return document.querySelector('#messages');
+        return document.querySelector('#left-panel');
     },
     _getMessagesList: function () {
-        return document.querySelector('#messages > ol');
+        return document.querySelector('#messages');
     },
     _getUsersList: function () {
-        return document.querySelector('#users > ul');
+        return document.querySelector('#users');
     },
     _clearMessages: function () {
         this._getMessagesList().innerHTML = null;
@@ -133,13 +133,13 @@ var chat = {
                     if (xhr.status === 200) {
                         $content.value = '';
                         self.refreshMessages();
-                        self.focusContentInput();
                     } else {
                         console.log('Error: ' + xhr.status);
                     }
                 }
             };
         }
+        self.focusContentInput();
     },
     focusContentInput: function () {
         document.querySelector('#message-form [name=content]').focus();
