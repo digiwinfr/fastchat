@@ -1,4 +1,5 @@
 var chat = {
+    _lastMessageId: null,
     _getGravatar: function (email) {
         var $gravatar = document.createElement('img');
         $gravatar.src = 'http://www.gravatar.com/avatar/' + md5(email) + '?d=identicon';
@@ -13,9 +14,6 @@ var chat = {
     },
     _getUsersList: function () {
         return document.querySelector('#users');
-    },
-    _clearMessages: function () {
-        this._getMessagesList().innerHTML = null;
     },
     _clearUsers: function () {
         this._getUsersList().innerHTML = null;
@@ -67,7 +65,13 @@ var chat = {
     },
     _findMessages: function () {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'messages');
+        var url;
+        if (this._lastMessageId == null) {
+            url = 'messages';
+        } else {
+            url = 'messages/from/' + this._lastMessageId
+        }
+        xhr.open('GET', url);
         xhr.send(null);
         return xhr;
     },
@@ -79,14 +83,19 @@ var chat = {
                 if (xhr.status === 200) {
                     var scrollIsOnBottom = self._scrollIsOnBottom();
                     var messages = JSON.parse(xhr.responseText);
-                    self._clearMessages();
-                    var $messages = self._getMessagesList();
-                    for (var i = 0; i < messages.length; i++) {
-                        var message = messages[i];
-                        self._appendMessage($messages, message);
-                    }
-                    if (scrollIsOnBottom) {
-                        self.updateScroll();
+                    if (messages.length > 0) {
+                        var lastMessageId = messages[messages.length - 1].id;
+                        if (self._lastMessageId != lastMessageId) {
+                            self._lastMessageId = lastMessageId;
+                            var $messages = self._getMessagesList();
+                            for (var i = 0; i < messages.length; i++) {
+                                var message = messages[i];
+                                self._appendMessage($messages, message);
+                            }
+                            if (scrollIsOnBottom) {
+                                self.updateScroll();
+                            }
+                        }
                     }
                 } else {
                     console.log('Error: ' + xhr.status);
@@ -151,7 +160,6 @@ var chat = {
 };
 
 (function () {
-
     document.querySelector('#message-form').addEventListener('submit', function (e) {
         e.preventDefault();
         chat.addMessage();

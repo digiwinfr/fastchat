@@ -21,6 +21,10 @@ $router->get('/messages', function () use ($messageController) {
     $messageController->latest();
 });
 
+$router->get('/messages/from/{id}', function ($id) use ($messageController) {
+    $messageController->from($id);
+});
+
 $router->post('/messages', function () use ($messageController) {
     $messageController->add();
 });

@@ -7,7 +7,7 @@ class MessageRepository extends Repository
 {
     public function findtLatest()
     {
-        $statement = $this->db->query('SELECT * FROM message LEFT JOIN user ON message.author_id = user.id ORDER BY message.id DESC LIMIT 0,100');
+        $statement = $this->db->query('SELECT message.*, user.nickname,user.email FROM message LEFT JOIN user ON message.author_id = user.id ORDER BY message.id DESC LIMIT 0,100');
         $messages = [];
         foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $row) {
             $message = new Message();
@@ -16,6 +16,18 @@ class MessageRepository extends Repository
         }
 
         return array_reverse($messages);
+    }
+
+    public function findFrom($id)
+    {
+        $statement = $this->db->query('SELECT message.*, user.nickname,user.email FROM message LEFT JOIN user ON message.author_id = user.id WHERE message.id > ' . $id . ' ORDER BY message.id ASC LIMIT 0,10');
+        $messages = [];
+        foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+            $message = new Message();
+            $message->hydrate($row);
+            $messages[] = $message;
+        }
+        return $messages;
     }
 
     public function save(Message $message)

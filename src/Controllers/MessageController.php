@@ -21,6 +21,12 @@ class MessageController extends Controller
         self::renderJson($messages);
     }
 
+    public function from($id)
+    {
+        $messages = $this->repository->findFrom($id);
+        self::renderJson($messages);
+    }
+
     public function add()
     {
         $content = $_POST['content'];
