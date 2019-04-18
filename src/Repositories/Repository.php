@@ -12,6 +12,6 @@ abstract class Repository
 
     protected function sanitize($string)
     {
-        return $this->db->quote(htmlspecialchars($string));
+        return $this->db->quote($string);
     }
 }

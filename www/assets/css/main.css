@@ -59,8 +59,6 @@ body {
 
 #messages li .content {
     margin-left: 50px;
-    font-family: "Courier New";
-
 }
 
 #messages li .content p {
@@ -71,6 +69,7 @@ body {
 #message-form [name="content"] {
     resize: none;
     height: 38px;
+    font-family: "Courier New";
 }
 
 #users {
