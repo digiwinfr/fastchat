@@ -11,10 +11,15 @@ mv composer.phar /usr/local/bin/composer
 RUN a2enmod rewrite
 
 
-RUN apt-get update && apt-get install -y --no-install-recommends git-core && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends git-core mysql-client && rm -rf /var/lib/apt/lists/*
 
 COPY . /var/www/html
 
 RUN composer install
 
-COPY .docker/services/php-apache/vhost.conf /etc/apache2/sites-available/000-default.conf
+COPY .docker/services/app/vhost.conf /etc/apache2/sites-available/000-default.conf
+COPY ./dump.sql /tmp/dump.sql
+COPY .docker/services/app/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+#ENTRYPOINT /entrypoint.sh

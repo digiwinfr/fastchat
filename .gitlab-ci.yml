@@ -1,0 +1,40 @@
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+  - undeploy
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+build:
+  image: registry.gitlab.factory.digiwin.tech/trsb/tools/docker-compose:1.24.0
+  stage: build
+  script:
+    - cp .env.build.dist .env
+    - docker-compose build app
+    - docker-compose push app
+  only:
+    - develop
+
+include:
+  - project: 'trsb/tools/gitlab-ci-helpers'
+    file: '/deploy/deploy-delivery.gitlab-ci.yml'
+
+deploy:
+  extends: .deploy-delivery
+  stage: deploy
+  environment:
+    url: https://fastchat.delivery.trsb.net
+    on_stop: undeploy
+  variables:
+    PROJECT_PATH: /data/trsb/fastchat
+    SERVICES_NAME: app database
+  only:
+    - develop
+
+undeploy:
+  extends: .stop-deploy-delivery
+  stage: undeploy

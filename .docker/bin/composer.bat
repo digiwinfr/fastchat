@@ -1,2 +1,2 @@
 @echo off
-docker-compose run --rm php composer %1
+docker-compose run --rm app composer %1

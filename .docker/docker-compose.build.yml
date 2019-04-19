@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  app:
+    image: registry.gitlab.factory.digiwin.tech/trsb/fastchat/app
+    build:
+      dockerfile: .docker/services/app/Dockerfile
+      context: ..

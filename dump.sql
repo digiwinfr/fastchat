@@ -3,7 +3,8 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE IF NOT EXISTS `fastchat`;
+DROP DATABASE IF EXISTS `fastchat`;
+CREATE DATABASE `fastchat`;
 
 USE `fastchat`;
 

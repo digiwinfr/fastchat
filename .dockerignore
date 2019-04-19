@@ -1,5 +1,6 @@
 *
-!.docker/services/php-apache/vhost.conf
+!.docker/services/app/vhost.conf
+!.docker/services/app/entrypoint.sh
 !src
 !config
 !public

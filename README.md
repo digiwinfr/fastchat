@@ -28,6 +28,9 @@ Durée : 3 à 4 heures
 
 *NB : Il faut que le projet soit fonctionnel lors de son installation (en dehors des configurations BDD)*
 
+
+[Démo](https://fastchat.delivery.trsb.net/)
+
 ## Installation
 
 ### Avec Docker
@@ -50,7 +53,7 @@ docker-compose up -d
 .docker/bin/composer install
 
 # Restauration de la base de données
-docker-compose exec mysql sh -c 'mysql -u root -proot fastchat < /tmp/dump.sql'
+docker-compose exec database sh -c 'mysql -u root -proot fastchat < /tmp/dump.sql'
 ```
 
 Fastchat est disponible à l'adresse [http://localhost:8080](http://localhost:8080)

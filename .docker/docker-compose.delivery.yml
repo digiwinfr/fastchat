@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  app:
+    image: registry.gitlab.factory.digiwin.tech/trsb/fastchat/app
+    networks:
+      - default
+      - front
+    environment:
+      - VIRTUAL_HOST=fastchat.delivery.trsb.net
+      - LETSENCRYPT_HOST=fastchat.delivery.trsb.net
+      - LETSENCRYPT_EMAIL=factory@trsb.net
+
+  database:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fastchat
+      - MYSQL_USER=fastchat
+      - MYSQL_PASSWORD=fastchat
+
+networks:
+  front:
+    external:
+      name: delivery_default
