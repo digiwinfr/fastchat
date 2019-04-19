@@ -1,8 +1,12 @@
 var chat = {
     _lastMessageId: null,
-    _getGravatar: function (email) {
+    _getGravatar: function (user) {
         var $gravatar = document.createElement('img');
-        $gravatar.src = 'http://www.gravatar.com/avatar/' + md5(email) + '?d=identicon';
+        if (user.bot) {
+            $gravatar.src = 'assets/images/robot.png';
+        } else {
+            $gravatar.src = 'http://www.gravatar.com/avatar/' + md5(user.email) + '?d=identicon';
+        }
         $gravatar.classList.add('gravatar');
         return $gravatar;
     },
@@ -40,7 +44,7 @@ var chat = {
         var content = md.render(message.content);
         $content.innerHTML = content;
         const $header = document.createElement('div');
-        $header.appendChild(this._getGravatar(message.author.email));
+        $header.appendChild(this._getGravatar(message.author));
         $header.appendChild($author);
         $header.appendChild($date);
         $message.appendChild($header);
@@ -52,7 +56,7 @@ var chat = {
         if (!user.connected) {
             $user.classList.add('disconnected');
         }
-        $user.appendChild(this._getGravatar(user.email));
+        $user.appendChild(this._getGravatar(user));
         const $nickname = document.createElement('span');
         $nickname.classList.add('nickname');
         $nickname.innerText = user.nickname;

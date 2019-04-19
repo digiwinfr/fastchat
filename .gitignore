@@ -1,4 +1,4 @@
 .idea
 .env
 vendor
-www/assets/lib
+public/assets/lib

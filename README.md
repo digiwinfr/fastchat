@@ -41,7 +41,7 @@ Durée : 3 à 4 heures
 
 ```bash
 # Copie du fichier d'environnement par défaut
-cp .env.dist .env
+cp .env.dev.dist .env
 
 # Téléchargement, build des images et démarrage des conteneurs
 docker-compose up -d

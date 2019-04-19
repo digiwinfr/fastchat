@@ -1,0 +1,8 @@
+*
+!.docker/services/php-apache/vhost.conf
+!src
+!config
+!public
+!composer.json
+!composer.lock
+!dump.sql

@@ -10,7 +10,7 @@
   "extra": {
     "installer-types": ["npm-asset"],
     "installer-paths": {
-      "www/assets/lib/{$name}/": ["type:npm-asset"]
+      "public/assets/lib/{$name}/": ["type:npm-asset"]
     }
   },
   "repositories": [
