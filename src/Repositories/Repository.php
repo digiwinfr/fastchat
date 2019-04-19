@@ -7,7 +7,7 @@ abstract class Repository
 
     public function __construct()
     {
-        $this->db = new \PDO('mysql:host=mysql;dbname=' . DATABASE_NAME . ';charset=utf8', DATABASE_USER, DATABASE_PASSWORD);
+        $this->db = new \PDO('mysql:host=' . DATABASE_HOST . ';dbname=' . DATABASE_NAME . ';charset=utf8', DATABASE_USER, DATABASE_PASSWORD);
     }
 
     protected function sanitize($string)

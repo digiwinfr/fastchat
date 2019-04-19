@@ -5,9 +5,9 @@ use Digiwin\Fastchat\Models\User;
 
 class UserRepository extends Repository
 {
-    public function all()
+    public function allHumans()
     {
-        $statement = $this->db->query('SELECT * FROM user ORDER BY nickname');
+        $statement = $this->db->query('SELECT * FROM user WHERE bot=0 ORDER BY nickname');
         $users = [];
         foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $row) {
             $user = new User();
@@ -41,5 +41,13 @@ class UserRepository extends Repository
     public function disconnect($id)
     {
         $this->db->exec('UPDATE user SET connected = 0 WHERE id=' . $id);
+    }
+
+    public function findBotByName($name)
+    {
+        $statement = $this->db->query('SELECT * FROM user WHERE bot=1 AND nickname=' . $this->sanitize($name));
+        $user = new User();
+        $user->hydrate($statement->fetch(\PDO::FETCH_ASSOC));
+        return $user;
     }
 }

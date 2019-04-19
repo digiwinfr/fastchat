@@ -20,7 +20,9 @@ class Message implements Model
         $author->hydrate([
             'id' => $array['author_id'],
             'nickname' => $array['nickname'],
-            'email' => $array['email']
+            'email' => $array['email'],
+            'bot' => $array['bot'],
+            'connected' => $array['connected']
         ]);
         $this->author = $author;
     }

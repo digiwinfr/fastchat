@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function all()
     {
-        $users = $this->repository->all();
+        $users = $this->repository->allHumans();
         self::renderJson($users);
     }
 }

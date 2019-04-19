@@ -29,7 +29,8 @@ CREATE TABLE `message` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nickname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255),
+  `bot` tinyint(1) NOT NULL DEFAULT 0,
   `connected` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -69,4 +70,7 @@ ALTER TABLE `user`
 ALTER TABLE `message`
   ADD FOREIGN KEY (`author_id`) REFERENCES user(id);
 
-COMMIT
+
+INSERT INTO `user` (`nickname`, `bot`) VALUES ('bot', 1);
+
+COMMIT;
