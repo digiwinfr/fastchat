@@ -1,4 +1,4 @@
-# ![cat](www/assets/images/cat.png) FastChat
+# ![cat](public/assets/images/cat.png) FastChat
 
 Un chat en PHP/MySQL sans framework.
 
